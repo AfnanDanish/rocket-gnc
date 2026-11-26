@@ -1,4 +1,4 @@
-"""3-DOF point-mass rocket dynamics (Phase 1).
+"""3-DOF point-mass rocket dynamics.
 
 State and frame conventions live in docs/conventions.md. Fill that in first, then make the
 docstrings below match it.
@@ -25,4 +25,4 @@ def derivative(t: float, x: np.ndarray, thrust: np.ndarray, vehicle: Vehicle3DOF
     Suggested state layout: x = [r (3), v (3), m (1)]. Decide in docs/conventions.md.
     Include: gravity, thrust acceleration, and mass flow mdot = -|T| / (Isp * G0).
     """
-    raise NotImplementedError("Phase 1: implement point-mass dynamics")
+    raise NotImplementedError("TODO: implement point-mass dynamics")

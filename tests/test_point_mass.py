@@ -1,13 +1,13 @@
-"""Phase 1 acceptance tests.
+"""Point-mass simulation acceptance tests.
 
 These are skipped until you get to them. For each one: delete its skip marker, write the test
 body (the docstring says what it must prove), watch it fail, then make it pass.
-Phase 1 is done when nothing in this file is skipped and everything passes.
+This part is done when nothing in this file is skipped and everything passes.
 """
 
 import pytest
 
-todo = pytest.mark.skip(reason="Phase 1: write this test")
+todo = pytest.mark.skip(reason="TODO: write this test")
 
 
 @todo

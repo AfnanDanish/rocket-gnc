@@ -16,7 +16,7 @@ out/
 *.gif
 !docs/**/*.gif
 
-# C++ (Phase 7)
+# C++ build output
 cpp/build/
 
 # OS / editor

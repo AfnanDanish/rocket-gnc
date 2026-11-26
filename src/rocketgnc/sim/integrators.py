@@ -1,7 +1,7 @@
 """Numerical integrators.
 
-Phase 1: write RK4 yourself (no scipy.integrate here). Derive the update on paper first
-and put the scan in docs/derivations/phase1/.
+Write RK4 yourself (no scipy.integrate here). Derive the update on paper first
+and put the scan in docs/derivations/.
 """
 
 from collections.abc import Callable
@@ -17,7 +17,7 @@ def rk4_step(f: Derivative, t: float, x: np.ndarray, dt: float) -> np.ndarray:
 
     Returns the new state at t + dt. Must not modify x in place.
     """
-    raise NotImplementedError("Phase 1: implement RK4")
+    raise NotImplementedError("TODO: implement RK4")
 
 
 def integrate(
@@ -28,4 +28,4 @@ def integrate(
     Returns (t, X) where t has shape (N,) and X has shape (N, len(x0)); X[0] == x0.
     Decide how to handle a last step that doesn't divide evenly, and document it here.
     """
-    raise NotImplementedError("Phase 1: implement the fixed-step loop")
+    raise NotImplementedError("TODO: implement the fixed-step loop")

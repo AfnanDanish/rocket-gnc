@@ -12,20 +12,6 @@ A 6-DOF booster comes back through wind, sensor noise and engine dispersions and
 - **Verification:** a 1,000-run Monte Carlo dispersion analysis
 - **Flight core:** a C++ port with timing benchmarks
 
-> 🚧 Work in progress. Results, the landing animation and a live 3D replay will land here as each phase is finished.
-
-## Roadmap
-
-- [ ] **Phase 0: Setup.** Repo, CI, conventions, dev log
-- [ ] **Phase 1: 3-DOF point-mass sim.** RK4, mass depletion, hoverslam baseline
-- [ ] **Phase 2: Convex powered-descent guidance.** Lossless convexification, glide-slope and pointing constraints, time-of-flight search
-- [ ] **Phase 3: 6-DOF dynamics.** Quaternions, TVC with gimbal limits, engine lag, drag, wind
-- [ ] **Phase 4: Control.** Outer position loop, LQR attitude loop, re-planning
-- [ ] **Phase 5: Navigation.** Sensor models, error-state EKF, NEES/NIS consistency
-- [ ] **Phase 6: Monte Carlo.** 1,000 dispersed runs, landing CEP, failure analysis
-- [ ] **Phase 7: C++ flight core.** Eigen, CVXPYgen, pybind11 cross-check, benchmarks
-- [ ] **Phase 8: Demo.** three.js replay on GitHub Pages, technical report
-
 ## Quickstart
 
 ```bash
@@ -47,10 +33,10 @@ src/rocketgnc/
   gnc/nav/            sensor models, error-state EKF
   montecarlo/         dispersion setup, parallel runner, statistics
   viz/                plots and animations
-tests/                one test file per phase; every phase passes before the next starts
+tests/                unit and acceptance tests
 docs/
   conventions.md      frames, units, quaternion convention (read this first)
-  derivations/        hand derivations for every phase
+  derivations/        hand derivations behind the code
 DEVLOG.md             running log of what was built and learned
 ```
 

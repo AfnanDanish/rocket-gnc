@@ -1,1 +1,1 @@
-"""Monte Carlo dispersion runs and statistics (Phase 6)."""
+"""Monte Carlo dispersion runs and statistics."""
