@@ -2,45 +2,50 @@
 
 [![CI](https://github.com/AfnanDanish/rocket-gnc/actions/workflows/ci.yml/badge.svg)](https://github.com/AfnanDanish/rocket-gnc/actions/workflows/ci.yml)
 
-Guidance, navigation and control for a propulsive rocket landing, written from scratch.
+I'm teaching myself guidance, navigation and control by building the whole stack for a rocket that
+lands itself, from an empty folder. No GNC library, no copied flight code. The physics, the
+guidance, the controller and the state estimator are all written here, and every one gets checked
+against something I can derive on paper.
 
-A 6-DOF booster comes back through wind, sensor noise and engine dispersions and lands itself on a pad, using:
+The guidance is the part I find most interesting. Landing a rocket with the least fuel, without
+hitting the ground sideways, can be posed as a convex optimization problem and solved fast enough to
+run on board. That's the idea in Açıkmeşe & Ploen (2007), and building up to it properly is most of
+the point of this repo.
 
-- **Guidance:** convex-optimization powered-descent guidance (lossless convexification, Açıkmeşe & Ploen 2007)
-- **Control:** thrust-vector control, with LQR attitude control and MPC-style re-planning
-- **Navigation:** an error-state extended Kalman filter fusing IMU, GPS and a radar altimeter
-- **Verification:** a 1,000-run Monte Carlo dispersion analysis
-- **Flight core:** a C++ port with timing benchmarks
+It's early. Right now there's a skeleton, conventions to pin down, and failing tests waiting for
+code. I'd rather the history show that honestly than pretend it arrived finished.
 
-## Quickstart
+## Running it
 
 ```bash
 python -m venv .venv
 # Windows: .venv\Scripts\activate    macOS/Linux: source .venv/bin/activate
 pip install -e ".[dev]"
 pytest
-ruff check .
 ```
 
-## Layout
+Tests marked as skipped are the ones I haven't written yet. Each one says in its docstring what it
+has to prove.
+
+## How it's laid out
 
 ```
 src/rocketgnc/
-  constants.py        physical constants
-  sim/                dynamics, integrators, environment (gravity, wind, drag)
-  gnc/guidance/       hoverslam baseline, convex powered-descent guidance
-  gnc/control/        position and attitude controllers
-  gnc/nav/            sensor models, error-state EKF
-  montecarlo/         dispersion setup, parallel runner, statistics
-  viz/                plots and animations
-tests/                unit and acceptance tests
-docs/
-  conventions.md      frames, units, quaternion convention (read this first)
-  derivations/        hand derivations behind the code
-DEVLOG.md             running log of what was built and learned
+  sim/              dynamics and integrators
+  gnc/guidance/     where the rocket should go
+  gnc/control/      how to make it go there
+  gnc/nav/          where it thinks it is
+  montecarlo/       the same landing a thousand times with things going wrong
+  viz/              plots
+docs/conventions.md frames, units, quaternion convention. Decided before any code, on purpose
+docs/derivations/   the paper working behind each piece of code
+DEVLOG.md           what I did, what broke, what I learned
 ```
 
-## References
+Conventions come first because half the bugs in this kind of code are a frame or a sign that two
+files disagree about.
+
+## Reading I'm working from
 
 - B. Açıkmeşe, S. R. Ploen, *Convex Programming Approach to Powered Descent Guidance for Mars Landing*, JGCD, 2007
 - L. Blackmore, B. Açıkmeşe, D. P. Scharf, *Minimum-Landing-Error Powered-Descent Guidance for Mars Landing Using Convex Optimization*, JGCD, 2010
