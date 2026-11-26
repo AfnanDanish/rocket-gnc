@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# Generated outputs (commit only curated results under docs/results/)
+out/
+*.mp4
+*.gif
+!docs/**/*.gif
+
+# C++ (Phase 7)
+cpp/build/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
